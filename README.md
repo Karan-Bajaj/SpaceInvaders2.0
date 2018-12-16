@@ -5,7 +5,7 @@ Space Invaders 2.0 is a single player game where the person playing has to “sh
 
 The spaceship is going to consist of a row of pixels on the bottom of the LCD, and is free to move in the horizontal direction controlled by user input from the potentiometer. The obstacles will be arranged in a grid of 3x3 blocks on the centre of the screen that move down in the y-direction every time interval, and doing a sweep of the screen across the x-coordinate; autonomously controlled by the software on the microcontroller. The user must change the x-coordinate of the spaceship to align with the centre of the spaceship (where the laser is), and the x-coordinate of the block that is being targeted. Once the player presses the INT0 push button, the laser fires and instantly deletes the closest block with that x-coordinate (if there is any.) If the laser hits a block, the LEDs flash once, congratulating the player on their small win. If however, the blocks reach the bottom of the LCD screen, the LEDs continuously flash signalling a loss, until the user resets the microcontroller. This concept is visually illustrated in Figure 1 on the next page.
 
-## TASKS
+# TASKS
 
 The system will contain 3 tasks to handle the game. The first of these tasks will handle the movement of the obstacles, and to check if the player has lost. This task will decrement the position of all available (not destroyed) blocks in the system every time interval. This task will have the lowest priority as it does not need to interrupt any of the other tasks and has the longest time-frame to complete. However, if the position of any of the blocks reaches the zero level (aka the level of the spaceship), it will execute an infinite loop to signal the game is over to the player. 
 
